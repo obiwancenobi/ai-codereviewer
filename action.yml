@@ -1,4 +1,4 @@
-name: "AI Code Review Action v2"
+name: "AI Code Review Action v3"
 description: "Advanced AI-powered code reviews with multiple model support"
 inputs:
   GITHUB_TOKEN:
