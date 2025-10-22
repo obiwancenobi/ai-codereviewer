@@ -5,7 +5,7 @@ inputs:
     description: "GitHub token"
     required: true
   AI_PROVIDER:
-    description: "AI provider (openai, anthropic, google)"
+    description: "AI provider (openai, anthropic, google, openrouter)"
     required: true
     default: "openai"
   AI_MODEL:

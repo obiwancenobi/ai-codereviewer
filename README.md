@@ -1,6 +1,6 @@
 # AI Code Reviewer
 
-AI Code Reviewer is a GitHub Action that leverages multiple AI providers (OpenAI, Anthropic, Google) to provide intelligent feedback and suggestions on your pull requests. This powerful tool helps improve code quality and saves developers time by automating the code review process.
+AI Code Reviewer is a GitHub Action that leverages multiple AI providers (OpenAI, Anthropic, Google, OpenRouter) to provide intelligent feedback and suggestions on your pull requests. This powerful tool helps improve code quality and saves developers time by automating the code review process.
 
 ## Features
 
@@ -8,6 +8,7 @@ AI Code Reviewer is a GitHub Action that leverages multiple AI providers (OpenAI
   - OpenAI (ChatGPT)
   - Anthropic (Claude)
   - Google (Gemini)
+  - OpenRouter
 - Provides intelligent comments and suggestions for improving your code
 - Reviews only new changes in PR updates
 - Filters out files that match specified exclude patterns
@@ -19,11 +20,13 @@ AI Code Reviewer is a GitHub Action that leverages multiple AI providers (OpenAI
    - [OpenAI](https://platform.openai.com/api-keys)
    - [Anthropic](https://console.anthropic.com/account/keys)
    - [Google AI](https://makersuite.google.com/app/apikey)
+   - [OpenRouter](https://openrouter.ai/settings/keys)
 
 2. Add the API key as a GitHub Secret in your repository:
    - `OPENAI_API_KEY` for OpenAI
    - `ANTHROPIC_API_KEY` for Claude
    - `GOOGLE_AI_KEY` for Google Gemini
+   - `OPENROUTER_API_KEY` for OpenRouter
 
 3. Create `.github/workflows/code-review.yml`:
 
@@ -47,7 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
           # Choose your AI provider and key
-          AI_PROVIDER: "openai" # or "anthropic" or "google"
+          AI_PROVIDER: "openai" # or "anthropic" or "google" or 
           AI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_MODEL: "gpt-4o-mini"
           AI_TEMPERATURE: 0.3 # 0 to 1 - higher values = more creativity and variance
@@ -64,7 +67,7 @@ jobs:
 
 | Input | Description | Default |
 |-------|-------------|---------|
-| `AI_PROVIDER` | AI provider to use (`openai`, `anthropic`, `google`) | `openai` |
+| `AI_PROVIDER` | AI provider to use (`openai`, `anthropic`, `google`, `openrouter`) | `openai` |
 | `AI_API_KEY` | API key for chosen provider | Required |
 | `AI_MODEL` | Model to use (see supported models below) | Provider's default |
 | `AI_TEMPERATURE` | Temperature for AI model | `0` |
@@ -107,7 +110,7 @@ To test the action locally:
 1. Create a `.env` file with your credentials:
 ```env
 GITHUB_TOKEN=your_github_token
-AI_PROVIDER=openai  # or anthropic, google
+AI_PROVIDER=openai  # or anthropic, google, openrouter
 AI_API_KEY=your_api_key
 AI_MODEL=your_preferred_model
 ```
